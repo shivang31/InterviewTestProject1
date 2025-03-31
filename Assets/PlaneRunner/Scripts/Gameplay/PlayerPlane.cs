@@ -7,7 +7,7 @@ namespace Plane.Gameplay
 {
     public class PlayerPlane : MonoBehaviour
     {
-        public Vector2 m_Angle = Vector2.zero;
+        public Vector2 m_Angle_ = Vector2.zero;
         public Transform m_Base;
         Vector2 m_TurnSpeed = Vector2.zero;
 
@@ -38,7 +38,7 @@ namespace Plane.Gameplay
             }
             else if (Input.GetKey(KeyCode.RightArrow))
             {
-                InputX = 1;
+                InputX = 2;
             }
 
             if (Input.GetKey(KeyCode.UpArrow))
@@ -47,7 +47,7 @@ namespace Plane.Gameplay
             }
             else if (Input.GetKey(KeyCode.DownArrow))
             {
-                InputY = -1;
+                InputY = -2;
             }
 
             Vector3 movement = 40 * Time.deltaTime * new Vector3(InputX, InputY, 0);
@@ -61,10 +61,10 @@ namespace Plane.Gameplay
             //m_Angle.x= Mathf.Clamp(m_Angle.x, -85, 85);
             //m_Angle.y = Mathf.Clamp(m_Angle.y, -45, 45);
 
-            m_Angle.x = Mathf.Lerp(m_Angle.x, 60.0f * InputX, 5 * Time.deltaTime);
-            m_Angle.y = Mathf.Lerp(m_Angle.y, 20.0f * InputY, 5 * Time.deltaTime);
+            m_Angle_.x = Mathf.Lerp(m_Angle_.x, 60.0f * InputX, 5 * Time.deltaTime);
+            m_Angle_.y = Mathf.Lerp(m_Angle_.y, 20.0f * InputY, 5 * Time.deltaTime);
 
-            m_Base.localRotation = Quaternion.Euler(-1f * m_Angle.y, 0, -m_Angle.x);
+            m_Base.localRotation = Quaternion.Euler(-1f * m_Angle_.y, 0, -m_Angle_.x);
 
             //transform.rotation = Quaternion.Euler(0, -0.8f*Time.deltaTime * m_Angle.x, 0) * transform.rotation;
             //transform.position += 25*Time.deltaTime * (transform.forward+new Vector3(0, .005f*m_TurnSpeed.y, 0));
@@ -78,8 +78,8 @@ namespace Plane.Gameplay
 
             //GetComponent<AudioSource>().pitch = 1 + 0.004f*Mathf.Abs(m_Angle.x);
 
-            Collider[] hits = Physics.OverlapSphere(transform.position, 2.5f);
-            foreach (Collider hit in hits)
+            Collider[] _hits = Physics.OverlapSphere(transform.position, 2.5f);
+            foreach (Collider hit in _hits)
             {
                 if (hit.gameObject == gameObject)
                     continue;
