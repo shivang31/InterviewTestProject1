@@ -20,7 +20,7 @@ namespace Plane.Gameplay
         [HideInInspector]
         public bool m_ShakeEnabled = true;
 
-        private Vector3 __m_LerpedPosition;
+        private Vector3 _m_LerpedPosition;
         private Quaternion m_LerpedRotation;
         [HideInInspector]
         public float m_CameraMoveLerp__ = 0;
@@ -40,7 +40,7 @@ namespace Plane.Gameplay
 
         void Start()
         {
-            __m_LerpedPosition = transform.position;
+            _m_LerpedPosition = transform.position;
             m_LerpedRotation = transform.rotation;
 
             m_ShakeEnabled = true;
