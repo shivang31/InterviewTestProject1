@@ -21,9 +21,9 @@ namespace Plane.Gameplay
         public bool m_ShakeEnabled = true;
 
         private Vector3 m_LerpedPosition;
-        private Quaternion m_LerpedRotation_;
+        private Quaternion m_LerpedRotation;
         [HideInInspector]
-        public float _m_CameraMoveLerp = 0;
+        public float m_CameraMoveLerp__ = 0;
         [HideInInspector]
         public int m_CameraMod = 0;
         Vector3 m_CamOffset = Vector3.zero;
@@ -41,7 +41,7 @@ namespace Plane.Gameplay
         void Start()
         {
             m_LerpedPosition = transform.position;
-            m_LerpedRotation_ = transform.rotation;
+            m_LerpedRotation = transform.rotation;
 
             m_ShakeEnabled = true;
 
@@ -122,15 +122,15 @@ namespace Plane.Gameplay
                
             //}
 
-            Vector3 _speedShake = new Vector3(0.2f * Mathf.Cos(10 * Time.time), 0.1f * Mathf.Sin(16 * Time.time), 0);
+            Vector3 _speedShake__ = new Vector3(0.2f * Mathf.Cos(10 * Time.time), 0.1f * Mathf.Sin(16 * Time.time), 0);
             if (!m_ShakeEnabled) 
             {
-                _speedShake = Vector3.zero;
+                _speedShake__ = Vector3.zero;
             }
             Vector3 camPos = new Vector3(0, 20, -30);
             camPos.x += .6f*PlayerPlane.m_Main.transform.position.x;
             camPos.y += .3f * PlayerPlane.m_Main.transform.position.y;
-            transform.position = camPos + ShakeOffset + _speedShake;
+            transform.position = camPos + ShakeOffset + _speedShake__;
         }
 
         public void StartShake(float t, float r)
